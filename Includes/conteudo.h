@@ -20,7 +20,7 @@ typedef char (*func_ptr_tipoConteudo)();
 
 
 /// @brief Função que cria uma variável do tipo conteúdo. Olhar os tipos dos callbacks acima
-/// @param dado Um ponteiro para um objeto genérico (Filme/Série ou Jogo)
+/// @param dado Um ponteiro para um objeto genérico (Filme, Série ou Jogo)
 /// @param anoLancamento Um callback para a função que retorna o ano de lançamento do conteúdo
 /// @param codConteudo Um callback para a função que retorna o codigo do conteúdo
 /// @param notaMedia Um callback para a função que retorna a nota media do conteúdo
@@ -51,7 +51,7 @@ tConteudo *criaConteudo(void *dado,
 /// @return o tipo da assinatura necessária para assistir um conteúdo
 TipoAssinatura getRestricaoConteudo(tConteudo *conteudo);
 
-/// @brief Imprime as informações de um conteúdo de acordo com o especificado no 
+/// @brief Imprime as informações de um conteúdo de acordo com o especificado (especificação/Casos)
 /// @param conteudo um ponteiro para uma variável do tipo conteúdo
 void printaConteudo(tConteudo *conteudo);
 
@@ -80,12 +80,12 @@ TipoUsuario getRestricaoIdade(tConteudo *conteudo);
 /// @param a um ponteiro para uma avaliação
 void inserirAvaliacaoConteudo(tConteudo *c, tAvaliacao *a);
 
-/// @brief Função que imprime o conteúdo com a nota dada pela pessoa de cpf
+/// @brief Função que imprime o conteúdo com a nota dada pelo usuário de cpf
 /// @param conteudo um ponteiro para uma variável do tipo conteúdo
 /// @param cpf O cpf da pessoa que deu a nota
 void printaConteudoComNota(tConteudo *conteudo, char* cpf);
 
-/// @brief Função que retorna a avaliação de um conteúdo dado pela pessoa de cpf
+/// @brief Função que retorna a avaliação de um conteúdo dado pelo usuário de cpf
 /// @param conteudo um ponteiro para uma variável do tipo conteúdo
 /// @param cpf o cpf da pessoa que fez a avaliação
 /// @return A avaliação que a pessoa deu ao conteúdo, se ela existir
@@ -107,7 +107,7 @@ tAvaliacao* getAvaliacaoPosicao(tConteudo *conteudo, int pos);
 /// @return  o título do conteúdo
 char* getTituloConteudo(tConteudo *conteudo);
 
-/// @brief retorna a nota media do conteúdo
+/// @brief Retorna a nota media do conteúdo
 /// @param conteudo um ponteiro para uma variável do tipo conteúdo
 /// @return a nota media do conteúdo
 float getNotaMediaConteudo(tConteudo *conteudo);
