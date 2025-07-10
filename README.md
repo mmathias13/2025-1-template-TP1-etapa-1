@@ -11,4 +11,6 @@ Informações relevantes:
 
 - A descrição completa do trabalho está disponível no Classroom da disciplina.
 
+-**IMPORTANTE**: NÃO FAÇA ALTERAÇÕES NESTE REPOSITÓRIO. ALUNOS QUE ALTERAREM O REPOSITÓRIO DE TEMPLATE SERÃO RESPONSABILIZADOS E PENALIZADOS.
+
 Qualquer dúvida ou problema, entre em contato com os monitores e/ou professores.
