@@ -22,6 +22,8 @@ int getNotaAvaliacao(tAvaliacao *a);
 /// @return O CPF do responsável pela avaliação
 char* getCpfAvaliacao(tAvaliacao *a);
 
-
+/// @brief Função que libera a memória alocada para uma avaliação
+/// @param avaliacao um ponteiro para uma variável do tipo tAvaliacao
+void liberaAvaliacao(tAvaliacao *avaliacao);
 
 #endif
