@@ -391,7 +391,7 @@ executa_professor() {
                 gab_src_files_names+=("$raw_file_name")
                 src=$DIR_GAB_SRC/$raw_file_name.c
                 out=$DIR_GAB_OBJ/$raw_file_name.o
-                output=$(gcc -Wall -c $src -o $out 2>&1)
+                output=$(gcc -std=gnu17 -Wall -c $src -o $out 2>&1)
                 if [ $? -ne 0 ]; then
                     echo_e_salva_log "   - Erro de compilação! Verifique se o arquivo $src está correto."
                     echo $TERMINAL_OUTPUT_LOG >> "log.txt"
@@ -400,7 +400,7 @@ executa_professor() {
             # fi
         done
 
-        output=$(gcc -Wall -o $DIR_GAB_OBJ/prog $DIR_GAB_OBJ/*.o -lm 2>&1)
+        output=$(gcc -std=gnu17 -Wall -o $DIR_GAB_OBJ/prog $DIR_GAB_OBJ/*.o -lm 2>&1)
         if [ $? -ne 0 ]; then
             echo_e_salva_log "   - Arquivos Linkados: Erro! Binário prog não gerado."
             echo $TERMINAL_OUTPUT_LOG >> "log.txt"
@@ -437,7 +437,7 @@ executa_professor() {
                     src_files_escondidas+="-include $file "
                 fi
             done < <(find "$DIR_GAB_SRC" -type f -name "*.c" -print0)
-            output=$(gcc -Wall -c ${src_files_escondidas[@]} $DIR_GAB_SRC/main.c -o $DIR_GAB_OBJ/main.o 2>&1)
+            output=$(gcc -std=gnu17 -Wall -c ${src_files_escondidas[@]} $DIR_GAB_SRC/main.c -o $DIR_GAB_OBJ/main.o 2>&1)
 
 
             if [ $? -ne 0 ]; then
@@ -841,7 +841,7 @@ executa_aluno() {
             for src_file_dir in "${config_test_names[@]}"; do
                 echo "   - Compilando a pasta $src_file_dir do aluno, gerando os .o's"
                 cd $src_file_dir
-                gcc -Wall -c *.c 2>> result_compilation.txt
+                gcc -std=gnu17 -Wall -c *.c 2>> result_compilation.txt
                 if [ $? -ne 0 ]; then
                     echo_e_salva_log "   - Erro de compilação! Verifique os arquivos da pasta $src_file_dir."
                     compilation_errors=$(expr $compilation_errors + 1)
@@ -872,7 +872,7 @@ executa_aluno() {
                 echo_e_salva_log " - Pasta $src_file_dir:"
                 echo_e_salva_log "   - Gerando o binário prog linkando com o(s) arquivo(s) $src_file_dir/*.o"
 
-                gcc -o $STUDENT_RESULT_FOLDER/$src_file_dir/prog $STUDENT_RESULT_FOLDER/$src_file_dir/*.o -lm 2>> $STUDENT_RESULT_FOLDER/$src_file_dir/result_linking.txt
+                gcc -std=gnu17 -o $STUDENT_RESULT_FOLDER/$src_file_dir/prog $STUDENT_RESULT_FOLDER/$src_file_dir/*.o -lm 2>> $STUDENT_RESULT_FOLDER/$src_file_dir/result_linking.txt
                 if [ $? -ne 0 ]; then
                     echo_e_salva_log "   - Arquivos Linkados: Erro! Binário prog não gerado."
                     linking_errors=$(expr $linking_errors + 1)
