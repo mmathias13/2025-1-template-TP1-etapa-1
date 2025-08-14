@@ -18,6 +18,56 @@ typedef struct Filme
 
 } tFilme;
 
+int getAnoLancamentoFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->anoDeLancamentoFilme;
+}
+
+char *getCodConteudoFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->identificadorFilme;
+}
+
+char *getTituloFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->tituloFilme;
+}
+
+int getDuracaoFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->duracaoFilme;
+}
+
+float getNotaMediaFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->notaMediaFilme;
+}
+
+TipoAssinatura getRestricaoAssinaturaFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->restricaoAssinatura;
+}
+
+TipoUsuario getRestricaoIdadeFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    return filme->restricaoIdade;
+}
+
+char getTipoFilme(){
+    return 'F';
+}
+
+void printaFilme(void *dado){
+    
+}
+
 tFilme *criaFilme(char *linhaFilme)
 {
     int i = 0;
@@ -66,6 +116,7 @@ tFilme *criaFilme(char *linhaFilme)
     return filme;
 }
 
-void liberaFilme(void *dado){
+void liberaFilme(void *dado)
+{
     free(dado);
 }
