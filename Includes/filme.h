@@ -31,6 +31,7 @@ int getDuracaoFilme(void *dado);
 float getNotaMediaFilme(void *dado);
 
 /// @brief Função que imprime as informações de um filme conforme especificação do trabalho
+/// Essa função deve imprimir conforme padrão especificado na funcionalidade 4 (após o - )
 /// @param dado Um ponteiro para um dado genérico, que deve ser convertido para tFilme*
 void printaFilme(void *dado);
 
