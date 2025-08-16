@@ -60,12 +60,17 @@ TipoUsuario getRestricaoIdadeFilme(void *dado)
     return filme->restricaoIdade;
 }
 
-char getTipoFilme(){
+char getTipoFilme()
+{
     return 'F';
 }
 
-void printaFilme(void *dado){
-    
+void printaFilme(void *dado)
+{
+    tFilme *filme = (tFilme *)dado;
+    int horas, minutos;
+    converteMinutos(filme->duracaoFilme, &horas, &minutos);
+    printf("FILME #%s; %s; %02d:%02d; %s; %d \n", filme->identificadorFilme, filme->tituloFilme, horas, minutos, descricaoIdioma(filme->disponibilidadeIdioma), filme->anoDeLancamentoFilme);
 }
 
 tFilme *criaFilme(char *linhaFilme)
