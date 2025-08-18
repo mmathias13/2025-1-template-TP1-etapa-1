@@ -76,12 +76,12 @@ char *getTituloJogo(void *dado){
     return jogo->tituloJogo;
 }
 
-int getRestricaoAssinaturaJogo(void *dado){
+TipoAssinatura getRestricaoAssinaturaJogo(void *dado){
     tJogo *jogo = (tJogo*)dado;
     return jogo->restricaoAssinatura;
 }
 
-int getRestricaoIdadeJogo(void *dado){
+TipoUsuario getRestricaoIdadeJogo(void *dado){
     tJogo *jogo = (tJogo*)dado;
     return jogo->restricaoIdade;
 }

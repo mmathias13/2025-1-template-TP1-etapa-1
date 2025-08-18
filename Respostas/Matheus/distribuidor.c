@@ -1,0 +1,41 @@
+#include "distribuidor.h"
+#include "conteudo.h"
+#include "util.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Distribuidor
+{
+
+    //---Informações Gerais---
+    char nomeDistribuidor[101];
+    char identificadorDistribuidor[19]; // CNPJ
+    char telefone[15];
+    char endereco[151];
+    char nomeUsuario[16];
+    char senha[21];
+
+    //---Específicas Distribuidores---
+    int numeroProdutosOfertados;
+    tConteudo **listaConteudosOfertados;
+    int qtdOfertados;
+
+} tDistribuidor;
+
+tDistribuidor *criaDistribuidor(char *linhaDados)
+{
+
+    int i = 0;
+    tDistribuidor *distribuidor = (tDistribuidor *)malloc(sizeof(tDistribuidor));
+    char *token = strtok(linhaDados, ';');
+    while (token != NULL)
+    {
+        if (i == 0){
+            strcpy()
+        }
+        token = strtok(NULL, ';');
+        i++;
+
+    }
+}
