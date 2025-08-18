@@ -76,9 +76,7 @@ void printaFilme(void *dado)
 tFilme *criaFilme(char *linhaFilme)
 {
     int i = 0;
-
     tFilme *filme = (tFilme *)malloc(sizeof(tFilme));
-
     char *token = strtok(linhaFilme, ";");
 
     while (token != NULL)
@@ -105,19 +103,17 @@ tFilme *criaFilme(char *linhaFilme)
         }
         else if (i == 5)
         {
-            filme->notaMediaFilme = atof(token);
-        }
-        else if (i == 6)
-        {
             filme->duracaoFilme = atoi(token);
         }
-        else if (i == 7)
+        else if (i == 6)
         {
             strcpy(filme->disponibilidadeIdioma, token);
         }
         token = strtok(NULL, ";");
         i++;
     }
+
+    filme->notaMediaFilme = 0.0;
     return filme;
 }
 
