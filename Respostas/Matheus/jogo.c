@@ -111,6 +111,10 @@ char *getDesenvolvedoraJogo(void *dado){
     return jogo->desenvolvedora;
 }
 
+char getTipoJogo(void *dado){
+    return 'J';
+}
+
 void liberaJogo(void *dado){
     free(dado);
 }
