@@ -69,7 +69,7 @@ int main()
                 qtdUsuarios++;
                 usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario *));
                 usuarios[qtdUsuarios - 1] = criaUsuario(tipo, assinatura, linhaDados);
-                printf("DEBUG: Usuario criado com sucesso!\n");
+                printf("USUARIO CADASTRADO COM SUCESSO!\n");
             }
             else if (strcmp(tipo_ator_str, "DISTRIBUIDOR") == 0)
             {
@@ -79,7 +79,7 @@ int main()
                 distribuidores = realloc(distribuidores, qtdDistribuidores * sizeof(tDistribuidor *));
                 distribuidores[qtdDistribuidores - 1] = criaDistribuidor(linhaDados);
 
-                printf("DEBUG: Distribuidor criado com sucesso!\n");
+                printf("DISTRIBUIDOR CADASTRADO COM SUCESSO!\n");
             }
         }
         else if (strcmp(comando, "CAC") == 0)
@@ -404,6 +404,287 @@ int main()
 
                     printf("LISTA DE CONTEUDOS CONSUMIDOS:\n");
                     imprimeListaDeConsumidos(usuarioAlvo);
+                }
+            }
+        }
+        else if (strcmp(comando, "COF") == 0 || strcmp(comando, "COFP") == 0)
+        {
+            char *cpfUsuario = strtok(args, " ");
+            char *termoBusca = strtok(NULL, "");
+
+            tUsuario *usuarioAlvo = NULL;
+            for (int i = 0; i < qtdUsuarios; i++)
+            {
+                if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+                {
+                    usuarioAlvo = usuarios[i];
+                    break;
+                }
+            }
+
+            if (usuarioAlvo == NULL)
+            {
+                printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+            }
+            else
+            {
+                TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+                TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+
+                if (strcmp(comando, "COFP") == 0 && assinaturaUsuario == PADRAO)
+                {
+                    printf("A CONTA DE CPF %s NAO POSSUI PERMISSAO PARA EXECUTAR ESSE COMANDO!\n", cpfUsuario);
+                }
+                else
+                {
+                    printf("# - TIPO ID; NOME; DURACAO; DISP. IDIOMA; ANO; PRODUTORA\n");
+                    int contadorImpressao = 0;
+
+                    for (int i = 0; i < qtdConteudos; i++)
+                    {
+                        tConteudo *conteudoAtual = conteudos[i];
+                        if (getTipoConteudo(conteudoAtual) != 'F')
+                        {
+                            continue;
+                        }
+
+                        int podeImprimir = 1;
+                        if (strcmp(comando, "COF") == 0 && getRestricaoConteudo(conteudoAtual) == PREMIUM)
+                        {
+                            podeImprimir = 0;
+                        }
+                        if (tipoUsuario == INFANTIL && getRestricaoIdade(conteudoAtual) == ADULTO)
+                        {
+                            podeImprimir = 0;
+                        }
+
+                        if (podeImprimir)
+                        {
+                            if (strstr(getTituloConteudo(conteudoAtual), termoBusca) != NULL ||
+                                strcmp(getCodConteudo(conteudoAtual), termoBusca) == 0)
+                            {
+
+                                contadorImpressao++;
+                                printf("%d-", contadorImpressao);
+                                printaConteudo(conteudoAtual);
+                            }
+                        }
+                    }
+
+                    if (contadorImpressao == 0)
+                    {
+                        printf("NENHUM CONTEUDO ENCONTRADO!\n");
+                    }
+                }
+            }
+        }
+        else if (strcmp(comando, "COS") == 0 || strcmp(comando, "COSP") == 0)
+        {
+            char *cpfUsuario = strtok(args, " ");
+            char *termoBusca = strtok(NULL, "");
+
+            tUsuario *usuarioAlvo = NULL;
+            for (int i = 0; i < qtdUsuarios; i++)
+            {
+                if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+                {
+                    usuarioAlvo = usuarios[i];
+                    break;
+                }
+            }
+
+            if (usuarioAlvo == NULL)
+            {
+                printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+            }
+            else
+            {
+                TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+                TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+
+                if (strcmp(comando, "COSP") == 0 && assinaturaUsuario == PADRAO)
+                {
+                    printf("A CONTA DE CPF %s NAO POSSUI PERMISSAO PARA EXECUTAR ESSE COMANDO!\n", cpfUsuario);
+                }
+                else
+                {
+                    printf("# - TIPO ID; NOME; DURACAO; DISP. IDIOMA; ANO; PRODUTORA\n");
+                    int contadorImpressao = 0;
+
+                    for (int i = 0; i < qtdConteudos; i++)
+                    {
+                        tConteudo *conteudoAtual = conteudos[i];
+                        if (getTipoConteudo(conteudoAtual) != 'S')
+                        {
+                            continue;
+                        }
+
+                        int podeImprimir = 1;
+                        if (strcmp(comando, "COS") == 0 && getRestricaoConteudo(conteudoAtual) == PREMIUM)
+                        {
+                            podeImprimir = 0;
+                        }
+                        if (tipoUsuario == INFANTIL && getRestricaoIdade(conteudoAtual) == ADULTO)
+                        {
+                            podeImprimir = 0;
+                        }
+
+                        if (podeImprimir)
+                        {
+                            if (strstr(getTituloConteudo(conteudoAtual), termoBusca) != NULL ||
+                                strcmp(getCodConteudo(conteudoAtual), termoBusca) == 0)
+                            {
+
+                                contadorImpressao++;
+                                printf("%d-", contadorImpressao);
+                                printaConteudo(conteudoAtual);
+                            }
+                        }
+                    }
+
+                    if (contadorImpressao == 0)
+                    {
+                        printf("NENHUM CONTEUDO ENCONTRADO!\n");
+                    }
+                }
+            }
+        }
+        else if (strcmp(comando, "COJ") == 0 || strcmp(comando, "COJP") == 0)
+        {
+            char *cpfUsuario = strtok(args, " ");
+            char *termoBusca = strtok(NULL, "");
+
+            tUsuario *usuarioAlvo = NULL;
+            for (int i = 0; i < qtdUsuarios; i++)
+            {
+                if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+                {
+                    usuarioAlvo = usuarios[i];
+                    break;
+                }
+            }
+
+            if (usuarioAlvo == NULL)
+            {
+                printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+            }
+            else
+            {
+                TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+                TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+
+                if (strcmp(comando, "COJP") == 0 && assinaturaUsuario == PADRAO)
+                {
+                    printf("A CONTA DE CPF %s NAO POSSUI PERMISSAO PARA EXECUTAR ESSE COMANDO!\n", cpfUsuario);
+                }
+                else
+                {
+                    printf("# - TIPO ID; NOME; DURACAO; DISP. IDIOMA; ANO; PRODUTORA\n");
+                    int contadorImpressao = 0;
+
+                    for (int i = 0; i < qtdConteudos; i++)
+                    {
+                        tConteudo *conteudoAtual = conteudos[i];
+                        if (getTipoConteudo(conteudoAtual) != 'J')
+                        {
+                            continue;
+                        }
+
+                        int podeImprimir = 1;
+                        if (strcmp(comando, "COJ") == 0 && getRestricaoConteudo(conteudoAtual) == PREMIUM)
+                        {
+                            podeImprimir = 0;
+                        }
+                        if (tipoUsuario == INFANTIL && getRestricaoIdade(conteudoAtual) == ADULTO)
+                        {
+                            podeImprimir = 0;
+                        }
+
+                        if (podeImprimir)
+                        {
+                            if (strstr(getTituloConteudo(conteudoAtual), termoBusca) != NULL ||
+                                strcmp(getCodConteudo(conteudoAtual), termoBusca) == 0)
+                            {
+
+                                contadorImpressao++;
+                                printf("%d-", contadorImpressao);
+                                printaConteudo(conteudoAtual);
+                            }
+                        }
+                    }
+
+                    if (contadorImpressao == 0)
+                    {
+                        printf("NENHUM CONTEUDO ENCONTRADO!\n");
+                    }
+                }
+            }
+        }
+        else if (strcmp(comando, "GRAC") == 0)
+        {
+            char *cpfUsuario = strtok(args, " ");
+            char *idConteudo = strtok(NULL, "");
+
+            tUsuario *usuarioAlvo = NULL;
+            for (int i = 0; i < qtdUsuarios; i++)
+            {
+                if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+                {
+                    usuarioAlvo = usuarios[i];
+                    break;
+                }
+            }
+
+            tConteudo *conteudoAlvo = NULL;
+            if (usuarioAlvo != NULL)
+            {
+                for (int i = 0; i < qtdConteudos; i++)
+                {
+                    if (strcmp(getCodConteudo(conteudos[i]), idConteudo) == 0)
+                    {
+                        conteudoAlvo = conteudos[i];
+                        break;
+                    }
+                }
+            }
+
+            if (usuarioAlvo == NULL)
+            {
+                printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+            }
+            else if (conteudoAlvo == NULL)
+            {
+                printf("NENHUM CONTEUDO ENCONTRADO!\n");
+            }
+            else if (getAssinaturaUsuario(usuarioAlvo) == PADRAO && getRestricaoConteudo(conteudoAlvo) == PREMIUM)
+            {
+                printf("USUARIO DE CPF %s NAO TEM ACESSO AO CONTEUDO %s! OPERACAO NAO PERMITIDA\n", cpfUsuario, idConteudo);
+            }
+            else
+            {
+                printf("LISTA DE AVALIACOES DO CONTEUDO %s %s - NOTA MEDIA: %.1f\n",
+                       getCodConteudo(conteudoAlvo), getTituloConteudo(conteudoAlvo), getNotaMediaConteudo(conteudoAlvo));
+
+                int qtdAvaliacoes = getQtdAvaliacoes(conteudoAlvo);
+                for (int i = 0; i < qtdAvaliacoes; i++)
+                {
+                    tAvaliacao *avaliacaoAtual = getAvaliacaoPosicao(conteudoAlvo, i);
+                    char *cpfAvaliador = getCpfAvaliacao(avaliacaoAtual);
+                    char *nomeAvaliador = NULL;
+
+                    for (int j = 0; j < qtdUsuarios; j++)
+                    {
+                        if (strcmp(getCpfUsuario(usuarios[j]), cpfAvaliador) == 0)
+                        {
+                            nomeAvaliador = getNomeUsuario(usuarios[j]);
+                            break;
+                        }
+                    }
+
+                    if (nomeAvaliador != NULL)
+                    {
+                        printf("%d- %s -%d\n", i + 1, nomeAvaliador, getNotaAvaliacao(avaliacaoAtual));
+                    }
                 }
             }
         }
