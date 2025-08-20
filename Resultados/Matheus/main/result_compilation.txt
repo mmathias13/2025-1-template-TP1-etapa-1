@@ -1,0 +1,4 @@
+main.c: In function ‘main’:
+main.c:123:19: warning: unused variable ‘cnpjDistribuidor’ [-Wunused-variable]
+  123 |             char *cnpjDistribuidor = args; // O CNPJ é o único argumento na primeira linha
+      |                   ^~~~~~~~~~~~~~~~

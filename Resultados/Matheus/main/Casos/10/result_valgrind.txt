@@ -1,0 +1,24 @@
+==104702== Memcheck, a memory error detector
+==104702== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==104702== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==104702== Command: Resultados/Matheus/main/prog Resultados/Matheus/main/Casos/10
+==104702== Parent PID: 104701
+==104702== 
+==104702== Conditional jump or move depends on uninitialised value(s)
+==104702==    at 0x485036C: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==104702==    by 0x10A4EB: main (in /home/matheus/Trabalho/2025-1-template-TP1-etapa-1/Resultados/Matheus/main/prog)
+==104702== 
+==104702== Conditional jump or move depends on uninitialised value(s)
+==104702==    at 0x4850394: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==104702==    by 0x10A4EB: main (in /home/matheus/Trabalho/2025-1-template-TP1-etapa-1/Resultados/Matheus/main/prog)
+==104702== 
+==104702== 
+==104702== HEAP SUMMARY:
+==104702==     in use at exit: 0 bytes in 0 blocks
+==104702==   total heap usage: 72 allocs, 72 frees, 17,068 bytes allocated
+==104702== 
+==104702== All heap blocks were freed -- no leaks are possible
+==104702== 
+==104702== Use --track-origins=yes to see where uninitialised values come from
+==104702== For lists of detected and suppressed errors, rerun with: -s
+==104702== ERROR SUMMARY: 154 errors from 2 contexts (suppressed: 0 from 0)
