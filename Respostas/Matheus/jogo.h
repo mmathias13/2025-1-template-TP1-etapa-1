@@ -12,7 +12,7 @@ char *getCodJogo(void *dado);
 char *getTituloJogo(void *dado);
 TipoAssinatura getRestricaoAssinaturaJogo(void *dado);
 TipoUsuario getRestricaoIdadeJogo(void *dado);
-int getAnoDeLancamentoJogo(void *dado);
+int getAnoLancamentoJogo(void *dado);
 float getNotaMediaJogo(void *dado);
 int getDuracaoEstimadaJogo(void *dado);
 char *getCategoriaJogo(void *dado);

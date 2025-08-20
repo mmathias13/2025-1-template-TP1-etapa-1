@@ -127,7 +127,7 @@ int main()
                 else if (tipo == 'J')
                 {
                     novoConteudo = criaConteudo(dadoEspecifico,
-                                                getAnoDeLancamentoJogo, getCodJogo, getNotaMediaJogo,
+                                                getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo,
                                                 getTituloJogo, getDuracaoEstimadaJogo, NULL,
                                                 getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo,
                                                 liberaJogo);

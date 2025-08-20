@@ -28,7 +28,7 @@ tDistribuidor *criaDistribuidor(char *linhaDados)
 
     int i = 0;
     tDistribuidor *distribuidor = (tDistribuidor *)malloc(sizeof(tDistribuidor));
-    char *token = strtok(linhaDados, ';');
+    char *token = strtok(linhaDados, ";");
     while (token != NULL)
     {
         if (i == 0)
@@ -55,7 +55,7 @@ tDistribuidor *criaDistribuidor(char *linhaDados)
         {
             strcpy(distribuidor->senha, token);
         }
-        token = strtok(NULL, ';');
+        token = strtok(NULL, ";");
         i++;
     }
     distribuidor->numeroProdutosOfertados = 0;

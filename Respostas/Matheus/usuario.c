@@ -3,6 +3,7 @@
 #include "conteudo.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 struct Usuario
 {
@@ -34,7 +35,7 @@ tUsuario *criaUsuario(TipoUsuario tipo, TipoAssinatura assinatura, char *linhaDa
 
     int i = 0;
     tUsuario *usuario = (tUsuario *)malloc(sizeof(tUsuario));
-    char *token = (strtok(linhaDados, ';'));
+    char *token = (strtok(linhaDados, ";"));
     while (token != NULL)
     {
         if (i == 0)
@@ -78,7 +79,7 @@ tUsuario *criaUsuario(TipoUsuario tipo, TipoAssinatura assinatura, char *linhaDa
             else
                 strcpy(usuario->cpfResponsavel, token);
         }
-        token = (strtok(NULL, ';'));
+        token = (strtok(NULL, ";"));
         i++;
     }
 
