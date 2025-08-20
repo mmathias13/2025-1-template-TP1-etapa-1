@@ -412,6 +412,32 @@ int main()
             printf("Comando desconhecido: %s\n", comando);
         }
     }
+    for (int i = 0; i < qtdUsuarios; i++)
+    {
+        liberaUsuario(usuarios[i]);
+    }
+    if (usuarios != NULL)
+    {
+        free(usuarios);
+    }
+
+    for (int i = 0; i < qtdDistribuidores; i++)
+    {
+        liberaDistribuidor(distribuidores[i]);
+    }
+    if (distribuidores != NULL)
+    {
+        free(distribuidores);
+    }
+
+    for (int i = 0; i < qtdConteudos; i++)
+    {
+        liberaConteudo(conteudos[i]);
+    }
+    if (conteudos != NULL)
+    {
+        free(conteudos);
+    }
 
     return 0;
 }

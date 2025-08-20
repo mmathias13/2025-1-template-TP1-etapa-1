@@ -63,3 +63,37 @@ tDistribuidor *criaDistribuidor(char *linhaDados)
     distribuidor->listaConteudosOfertados = NULL;
     return distribuidor;
 }
+
+void liberaDistribuidor(tDistribuidor* distribuidor) {
+    if (distribuidor == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < distribuidor->qtdOfertados; i++) {
+        liberaConteudo(distribuidor->listaConteudosOfertados[i]);
+    }
+
+    if (distribuidor->listaConteudosOfertados != NULL) {
+        free(distribuidor->listaConteudosOfertados);
+    }
+
+    free(distribuidor);
+}
+
+void adicionaConteudoOfertado(tDistribuidor* distribuidor, tConteudo* conteudo) {
+    if (distribuidor == NULL || conteudo == NULL) {
+        return;
+    }
+    
+    distribuidor->qtdOfertados++;
+    distribuidor->numeroProdutosOfertados++;
+    distribuidor->listaConteudosOfertados = realloc(distribuidor->listaConteudosOfertados, distribuidor->qtdOfertados * sizeof(tConteudo*));
+    distribuidor->listaConteudosOfertados[distribuidor->qtdOfertados - 1] = conteudo;
+}
+
+char* getCnpjDistribuidor(tDistribuidor* distribuidor) {
+    if (distribuidor == NULL) {
+        return NULL;
+    }
+    return distribuidor->identificadorDistribuidor;
+}

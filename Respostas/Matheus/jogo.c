@@ -86,7 +86,7 @@ TipoUsuario getRestricaoIdadeJogo(void *dado){
     return jogo->restricaoIdade;
 }
 
-int getAnoDeLancamentoJogo(void *dado){
+int getAnoLancamentoJogo(void *dado){
     tJogo *jogo = (tJogo*)dado;
     return jogo->anoDeLancamentoJogo;
 }
@@ -111,7 +111,7 @@ char *getDesenvolvedoraJogo(void *dado){
     return jogo->desenvolvedora;
 }
 
-char getTipoJogo(void *dado){
+char getTipoJogo(){
     return 'J';
 }
 
