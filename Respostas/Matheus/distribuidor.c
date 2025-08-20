@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Distribuidor
+typedef struct Distribuidor
 {
 
     //---Informações Gerais---
@@ -31,11 +31,35 @@ tDistribuidor *criaDistribuidor(char *linhaDados)
     char *token = strtok(linhaDados, ';');
     while (token != NULL)
     {
-        if (i == 0){
-            strcpy()
+        if (i == 0)
+        {
+            strcpy(distribuidor->nomeDistribuidor, token);
+        }
+        else if (i == 1)
+        {
+            strcpy(distribuidor->identificadorDistribuidor, token);
+        }
+        else if (i == 2)
+        {
+            strcpy(distribuidor->telefone, token);
+        }
+        else if (i == 3)
+        {
+            strcpy(distribuidor->endereco, token);
+        }
+        else if (i == 4)
+        {
+            strcpy(distribuidor->nomeUsuario, token);
+        }
+        else if (i == 5)
+        {
+            strcpy(distribuidor->senha, token);
         }
         token = strtok(NULL, ';');
         i++;
-
     }
+    distribuidor->numeroProdutosOfertados = 0;
+    distribuidor->qtdOfertados = 0;
+    distribuidor->listaConteudosOfertados = NULL;
+    return distribuidor;
 }

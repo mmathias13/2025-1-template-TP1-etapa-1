@@ -113,3 +113,103 @@ tUsuario *criaUsuario(TipoUsuario tipo, TipoAssinatura assinatura, char *linhaDa
 
     return usuario;
 }
+
+void adicionaConteudoNaLista(tUsuario* usuario, tConteudo* conteudo) {
+    char* idNovoConteudo = getCodConteudo(conteudo);
+
+    for (int i = 0; i < usuario->qtdNaListaDeReproducao; i++) {
+        if (strcmp(getCodConteudo(usuario->listaDeReproducao[i]), idNovoConteudo) == 0) {
+            return;
+        }
+    }
+
+    if (getTipoUsuario(usuario) == INFANTIL && getRestricaoIdade(conteudo) == ADULTO) {
+        printf("NAO EH POSSIVEL ADICIONAR O CONTEUDO %s A CONTA INFANTIL DO CPF %s!\n",
+               idNovoConteudo, getCpfUsuario(usuario));
+        return;
+    }
+
+    if (getAssinaturaUsuario(usuario) == PADRAO && getRestricaoConteudo(conteudo) == PREMIUM) {
+        printf("NAO EH POSSIVEL ADICIONAR O CONTEUDO PREMIUM %s A CONTA PADRAO DO CPF %s!\n",
+               idNovoConteudo, getCpfUsuario(usuario));
+        return;
+    }
+
+    usuario->qtdNaListaDeReproducao++;
+    usuario->listaDeReproducao = realloc(usuario->listaDeReproducao, usuario->qtdNaListaDeReproducao * sizeof(tConteudo*));
+    usuario->listaDeReproducao[usuario->qtdNaListaDeReproducao - 1] = conteudo;
+}
+
+int removeConteudoDaLista(tUsuario* usuario, char* idConteudo) {
+    int indiceParaRemover = -1;
+    for (int i = 0; i < usuario->qtdNaListaDeReproducao; i++) {
+        if (strcmp(getCodConteudo(usuario->listaDeReproducao[i]), idConteudo) == 0) {
+            indiceParaRemover = i;
+            break;
+        }
+    }
+
+    if (indiceParaRemover != -1) {
+        for (int i = indiceParaRemover; i < usuario->qtdNaListaDeReproducao - 1; i++) {
+            usuario->listaDeReproducao[i] = usuario->listaDeReproducao[i + 1];
+        }
+
+        usuario->qtdNaListaDeReproducao--;
+        if (usuario->qtdNaListaDeReproducao > 0) {
+            usuario->listaDeReproducao = realloc(usuario->listaDeReproducao, usuario->qtdNaListaDeReproducao * sizeof(tConteudo*));
+        } else {
+            free(usuario->listaDeReproducao);
+            usuario->listaDeReproducao = NULL;
+        }
+        return 1;
+    }
+    return 0;
+}
+
+void imprimeListaDeReproducao(tUsuario* usuario) {
+    if (usuario->qtdNaListaDeReproducao == 0) {
+        printf("LISTA DE REPRODUCAO VAZIA!\n");
+    } else {
+        printf("LISTA DE REPRODUCAO:\n");
+        for (int i = 0; i < usuario->qtdNaListaDeReproducao; i++) {
+            printf("%d-", i + 1);
+            printaConteudo(usuario->listaDeReproducao[i]);
+        }
+    }
+
+    int totalMinutos = 0;
+    for (int i = 0; i < usuario->qtdNaListaDeReproducao; i++) {
+        totalMinutos += getDuracaoConteudo(usuario->listaDeReproducao[i]);
+    }
+
+    int horas = 0;
+    int minutos = 0;
+    converteMinutos(totalMinutos, &horas, &minutos);
+    printf("(TOTAL %02d:%02d horas)\n", horas, minutos);
+}
+
+tConteudo* consomePrimeiroDaLista(tUsuario* usuario) {
+    if (usuario == NULL || usuario->qtdNaListaDeReproducao == 0) {
+        return NULL;
+    }
+
+    tConteudo* conteudoConsumido = usuario->listaDeReproducao[0];
+
+    for (int i = 0; i < usuario->qtdNaListaDeReproducao - 1; i++) {
+        usuario->listaDeReproducao[i] = usuario->listaDeReproducao[i + 1];
+    }
+
+    usuario->qtdNaListaDeReproducao--;
+    if (usuario->qtdNaListaDeReproducao > 0) {
+        usuario->listaDeReproducao = realloc(usuario->listaDeReproducao, usuario->qtdNaListaDeReproducao * sizeof(tConteudo*));
+    } else {
+        free(usuario->listaDeReproducao);
+        usuario->listaDeReproducao = NULL;
+    }
+
+    return conteudoConsumido;
+}
+
+int getQtdConteudoNaLista(tUsuario* usuario) {
+    return usuario->qtdNaListaDeReproducao;
+}
