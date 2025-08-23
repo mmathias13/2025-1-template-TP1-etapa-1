@@ -37,27 +37,23 @@ int main()
 
         if (strcmp(comando, "CAT") == 0)
         {
-            // Primeiro, lemos a linha de dados que pertence a este comando
             char linhaDados[512];
             if (fgets(linhaDados, 512, stdin) == NULL)
             {
-                // Se não conseguirmos ler a linha de dados, algo está errado, saímos.
                 break;
             }
-            linhaDados[strcspn(linhaDados, "\n")] = '\0'; // Limpa a quebra de linha
+            linhaDados[strcspn(linhaDados, "\n")] = '\0';
 
             char *tipo_ator_str = strtok(args, " ");
-            char *subtipo_str = strtok(NULL, ""); // Pega o resto (ex: "PADRAO")
+            char *subtipo_str = strtok(NULL, "");
 
             if (strcmp(tipo_ator_str, "USUARIO") == 0)
             {
-                // Criamos uma cópia da linha de dados para extrair o CPF sem estragar a original
                 char copiaLinhaDados[512];
                 strcpy(copiaLinhaDados, linhaDados);
-                strtok(copiaLinhaDados, ";");  // Pula o nome
-                char *cpf = strtok(NULL, ";"); // Pega o CPF
+                strtok(copiaLinhaDados, ";");
+                char *cpf = strtok(NULL, ";");
 
-                // Verificação de duplicados
                 int cpf_existente = 0;
                 for (int i = 0; i < qtdUsuarios; i++)
                 {
@@ -73,7 +69,6 @@ int main()
                 {
                     TipoUsuario tipo;
                     TipoAssinatura assinatura;
-
                     if (strcmp(subtipo_str, "INFANTIL") == 0)
                     {
                         tipo = INFANTIL;
@@ -95,7 +90,7 @@ int main()
             {
                 char copiaLinhaDados[512];
                 strcpy(copiaLinhaDados, linhaDados);
-                strtok(copiaLinhaDados, ";"); // Pula o nome
+                strtok(copiaLinhaDados, ";");
                 char *cnpj = strtok(NULL, ";");
 
                 int cnpj_existente = 0;
@@ -120,18 +115,13 @@ int main()
         }
         else if (strcmp(comando, "CAC") == 0)
         {
-            char *cnpjDistribuidor = args; // O CNPJ é o único argumento na primeira linha
-
-            // 1. Lê a próxima linha, que contém os dados do conteúdo
             char linhaDados[512];
             if (fgets(linhaDados, 512, stdin) == NULL)
             {
-                // Se não conseguir ler a linha de dados, sai do loop.
                 break;
             }
-            linhaDados[strcspn(linhaDados, "\n")] = '\0'; // Limpa a quebra de linha
+            linhaDados[strcspn(linhaDados, "\n")] = '\0';
 
-            // 2. Cria uma cópia da linha para extrair o tipo e o ID para verificação
             char copiaLinhaDados[512];
             strcpy(copiaLinhaDados, linhaDados);
 
@@ -139,27 +129,20 @@ int main()
             char *idConteudo = strtok(NULL, ";");
             char tipo = tipoConteudoStr[0];
 
-            // 3. Verifica se o conteúdo com este ID já existe
             int id_existente = 0;
             for (int i = 0; i < qtdConteudos; i++)
             {
                 if (strcmp(getCodConteudo(conteudos[i]), idConteudo) == 0)
                 {
                     id_existente = 1;
-                    // Lógica para atualizar série, se necessário, iria aqui.
                     break;
                 }
             }
 
             if (id_existente)
             {
-                // Conforme a especificação, só séries podem ser "atualizadas".
-                // Filmes e jogos com ID repetido resultam em erro.
                 if (tipo == 'S')
                 {
-                    // A especificação diz para atualizar o número de episódios.
-                    // Uma implementação completa faria isso, mas para o trabalho,
-                    // imprimir a mensagem é o comportamento esperado.
                     printf("SERIE ATUALIZADA COM SUCESSO!\n");
                 }
                 else
@@ -169,60 +152,39 @@ int main()
             }
             else
             {
-                // Se o conteúdo não existe, procede com a criação
-                void *dadoEspecifico = NULL;
-                char *dadosParaCriacao = strchr(linhaDados, ';'); // Pega a string a partir do primeiro ';'
+                char *dadosParaCriacao = strchr(linhaDados, ';');
                 if (dadosParaCriacao != NULL)
                 {
-                    dadosParaCriacao++; // Avança o ponteiro para depois do ';'
+                    dadosParaCriacao++;
                 }
 
+                void *dadoEspecifico = NULL;
                 if (tipo == 'F')
-                {
                     dadoEspecifico = criaFilme(dadosParaCriacao);
-                }
                 else if (tipo == 'S')
-                {
                     dadoEspecifico = criaSerie(dadosParaCriacao);
-                }
                 else if (tipo == 'J')
-                {
                     dadoEspecifico = criaJogo(dadosParaCriacao);
-                }
 
                 if (dadoEspecifico != NULL)
                 {
                     tConteudo *novoConteudo = NULL;
-
                     if (tipo == 'F')
                     {
-                        novoConteudo = criaConteudo(dadoEspecifico,
-                                                    getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme,
-                                                    getTituloFilme, getDuracaoFilme, printaFilme,
-                                                    getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme,
-                                                    liberaFilme);
+                        novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
                     }
                     else if (tipo == 'S')
                     {
-                        novoConteudo = criaConteudo(dadoEspecifico,
-                                                    getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie,
-                                                    getTituloSerie, getDuracaoPorEpisodioSerie, NULL, // printaSerie não foi implementado
-                                                    getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie,
-                                                    liberaSerie);
+                        novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
                     }
                     else if (tipo == 'J')
                     {
-                        novoConteudo = criaConteudo(dadoEspecifico,
-                                                    getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo,
-                                                    getTituloJogo, getDuracaoEstimadaJogo, NULL, // printaJogo não foi implementado
-                                                    getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo,
-                                                    liberaJogo);
+                        novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
                     }
 
                     qtdConteudos++;
                     conteudos = realloc(conteudos, qtdConteudos * sizeof(tConteudo *));
                     conteudos[qtdConteudos - 1] = novoConteudo;
-
                     printf("CONTEUDO CADASTRADO COM SUCESSO!\n");
                 }
             }

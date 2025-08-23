@@ -1,4 +1,708 @@
-main.c: In function ‘main’:
-main.c:123:19: warning: unused variable ‘cnpjDistribuidor’ [-Wunused-variable]
-  123 |             char *cnpjDistribuidor = args; // O CNPJ é o único argumento na primeira linha
-      |                   ^~~~~~~~~~~~~~~~
+main2.c: In function ‘main’:
+main2.c:4:5: error: unknown type name ‘tUsuario’
+    4 |     tUsuario **usuarios = NULL;
+      |     ^~~~~~~~
+main2.c:4:27: error: ‘NULL’ undeclared (first use in this function)
+    4 |     tUsuario **usuarios = NULL;
+      |                           ^~~~
+main2.c:1:1: note: ‘NULL’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’?
+  +++ |+#include <stddef.h>
+    1 | int main() {
+main2.c:4:27: note: each undeclared identifier is reported only once for each function it appears in
+    4 |     tUsuario **usuarios = NULL;
+      |                           ^~~~
+main2.c:6:5: error: unknown type name ‘tDistribuidor’
+    6 |     tDistribuidor **distribuidores = NULL;
+      |     ^~~~~~~~~~~~~
+main2.c:8:5: error: unknown type name ‘tConteudo’
+    8 |     tConteudo **conteudos = NULL;
+      |     ^~~~~~~~~
+main2.c:12:12: warning: implicit declaration of function ‘fgets’ [-Wimplicit-function-declaration]
+   12 |     while (fgets(linhaComando, sizeof(linhaComando), stdin) != NULL) {
+      |            ^~~~~
+main2.c:12:54: error: ‘stdin’ undeclared (first use in this function)
+   12 |     while (fgets(linhaComando, sizeof(linhaComando), stdin) != NULL) {
+      |                                                      ^~~~~
+main2.c:1:1: note: ‘stdin’ is defined in header ‘<stdio.h>’; did you forget to ‘#include <stdio.h>’?
+  +++ |+#include <stdio.h>
+    1 | int main() {
+main2.c:13:22: warning: implicit declaration of function ‘strcspn’ [-Wimplicit-function-declaration]
+   13 |         linhaComando[strcspn(linhaComando, "\n")] = '\0';
+      |                      ^~~~~~~
+main2.c:1:1: note: include ‘<string.h>’ or provide a declaration of ‘strcspn’
+  +++ |+#include <string.h>
+    1 | int main() {
+main2.c:13:22: warning: incompatible implicit declaration of built-in function ‘strcspn’ [-Wbuiltin-declaration-mismatch]
+   13 |         linhaComando[strcspn(linhaComando, "\n")] = '\0';
+      |                      ^~~~~~~
+main2.c:13:22: note: include ‘<string.h>’ or provide a declaration of ‘strcspn’
+main2.c:14:13: warning: implicit declaration of function ‘strcmp’ [-Wimplicit-function-declaration]
+   14 |         if (strcmp(linhaComando, "OUT") == 0) {
+      |             ^~~~~~
+main2.c:14:13: note: include ‘<string.h>’ or provide a declaration of ‘strcmp’
+main2.c:20:9: warning: implicit declaration of function ‘strcpy’ [-Wimplicit-function-declaration]
+   20 |         strcpy(copiaLinhaComando, linhaComando);
+      |         ^~~~~~
+main2.c:20:9: note: include ‘<string.h>’ or provide a declaration of ‘strcpy’
+main2.c:20:9: warning: incompatible implicit declaration of built-in function ‘strcpy’ [-Wbuiltin-declaration-mismatch]
+main2.c:20:9: note: include ‘<string.h>’ or provide a declaration of ‘strcpy’
+main2.c:21:25: warning: implicit declaration of function ‘strtok’ [-Wimplicit-function-declaration]
+   21 |         char *comando = strtok(copiaLinhaComando, " ");
+      |                         ^~~~~~
+main2.c:21:25: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+main2.c:30:35: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   30 |             char *tipo_ator_str = strtok(args, " ");
+      |                                   ^~~~~~
+main2.c:41:32: warning: implicit declaration of function ‘getCpfUsuario’ [-Wimplicit-function-declaration]
+   41 |                     if (strcmp(getCpfUsuario(usuarios[i]), cpf) == 0) {
+      |                                ^~~~~~~~~~~~~
+main2.c:41:32: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+   41 |                     if (strcmp(getCpfUsuario(usuarios[i]), cpf) == 0) {
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                int
+main2.c:41:32: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:42:25: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+   42 |                         printf("CPF JA EXISTENTE! OPERACAO NAO PERMITIDA!\n");
+      |                         ^~~~~~
+main2.c:42:25: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:42:25: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+main2.c:42:25: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:49:21: error: unknown type name ‘TipoUsuario’
+   49 |                     TipoUsuario tipo = (strcmp(subtipo_str, "INFANTIL") == 0) ? INFANTIL : ADULTO;
+      |                     ^~~~~~~~~~~
+main2.c:49:81: error: ‘INFANTIL’ undeclared (first use in this function)
+   49 |                     TipoUsuario tipo = (strcmp(subtipo_str, "INFANTIL") == 0) ? INFANTIL : ADULTO;
+      |                                                                                 ^~~~~~~~
+main2.c:49:92: error: ‘ADULTO’ undeclared (first use in this function)
+   49 |                     TipoUsuario tipo = (strcmp(subtipo_str, "INFANTIL") == 0) ? INFANTIL : ADULTO;
+      |                                                                                            ^~~~~~
+main2.c:50:21: error: unknown type name ‘TipoAssinatura’
+   50 |                     TipoAssinatura assinatura = (strcmp(subtipo_str, "PREMIUM") == 0) ? PREMIUM : PADRAO;
+      |                     ^~~~~~~~~~~~~~
+main2.c:50:89: error: ‘PREMIUM’ undeclared (first use in this function)
+   50 |                     TipoAssinatura assinatura = (strcmp(subtipo_str, "PREMIUM") == 0) ? PREMIUM : PADRAO;
+      |                                                                                         ^~~~~~~
+main2.c:50:99: error: ‘PADRAO’ undeclared (first use in this function)
+   50 |                     TipoAssinatura assinatura = (strcmp(subtipo_str, "PREMIUM") == 0) ? PREMIUM : PADRAO;
+      |                                                                                                   ^~~~~~
+main2.c:53:32: warning: implicit declaration of function ‘realloc’ [-Wimplicit-function-declaration]
+   53 |                     usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario*));
+      |                                ^~~~~~~
+main2.c:1:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘realloc’
+  +++ |+#include <stdlib.h>
+    1 | int main() {
+main2.c:53:32: warning: incompatible implicit declaration of built-in function ‘realloc’ [-Wbuiltin-declaration-mismatch]
+   53 |                     usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario*));
+      |                                ^~~~~~~
+main2.c:53:32: note: include ‘<stdlib.h>’ or provide a declaration of ‘realloc’
+main2.c:53:71: error: ‘tUsuario’ undeclared (first use in this function)
+   53 |                     usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario*));
+      |                                                                       ^~~~~~~~
+main2.c:53:80: error: expected expression before ‘)’ token
+   53 |                     usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario*));
+      |                                                                                ^
+main2.c:54:49: warning: implicit declaration of function ‘criaUsuario’ [-Wimplicit-function-declaration]
+   54 |                     usuarios[qtdUsuarios - 1] = criaUsuario(tipo, assinatura, linhaDados);
+      |                                                 ^~~~~~~~~~~
+main2.c:54:47: warning: assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   54 |                     usuarios[qtdUsuarios - 1] = criaUsuario(tipo, assinatura, linhaDados);
+      |                                               ^
+main2.c:55:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+   55 |                     printf("USUARIO CADASTRADO COM SUCESSO!\n");
+      |                     ^~~~~~
+main2.c:55:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:66:32: warning: implicit declaration of function ‘getCnpjDistribuidor’ [-Wimplicit-function-declaration]
+   66 |                     if (strcmp(getCnpjDistribuidor(distribuidores[i]), cnpj) == 0) {
+      |                                ^~~~~~~~~~~~~~~~~~~
+main2.c:66:32: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+   66 |                     if (strcmp(getCnpjDistribuidor(distribuidores[i]), cnpj) == 0) {
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                int
+main2.c:66:32: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:67:25: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+   67 |                         printf("CNPJ JA EXISTENTE! OPERACAO NAO PERMITIDA!\n");
+      |                         ^~~~~~
+main2.c:67:25: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:75:38: warning: incompatible implicit declaration of built-in function ‘realloc’ [-Wbuiltin-declaration-mismatch]
+   75 |                     distribuidores = realloc(distribuidores, qtdDistribuidores * sizeof(tDistribuidor*));
+      |                                      ^~~~~~~
+main2.c:75:38: note: include ‘<stdlib.h>’ or provide a declaration of ‘realloc’
+main2.c:75:89: error: ‘tDistribuidor’ undeclared (first use in this function); did you mean ‘distribuidores’?
+   75 |                     distribuidores = realloc(distribuidores, qtdDistribuidores * sizeof(tDistribuidor*));
+      |                                                                                         ^~~~~~~~~~~~~
+      |                                                                                         distribuidores
+main2.c:75:103: error: expected expression before ‘)’ token
+   75 |                     distribuidores = realloc(distribuidores, qtdDistribuidores * sizeof(tDistribuidor*));
+      |                                                                                                       ^
+main2.c:76:61: warning: implicit declaration of function ‘criaDistribuidor’ [-Wimplicit-function-declaration]
+   76 |                     distribuidores[qtdDistribuidores - 1] = criaDistribuidor(linhaDados);
+      |                                                             ^~~~~~~~~~~~~~~~
+main2.c:76:59: warning: assignment to ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   76 |                     distribuidores[qtdDistribuidores - 1] = criaDistribuidor(linhaDados);
+      |                                                           ^
+main2.c:77:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+   77 |                     printf("DISTRIBUIDOR CADASTRADO COM SUCESSO!\n");
+      |                     ^~~~~~
+main2.c:77:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:93:37: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   93 |             char *tipoConteudoStr = strtok(copiaLinhaDados, ";");
+      |                                     ^~~~~~
+main2.c:100:28: warning: implicit declaration of function ‘getCodConteudo’ [-Wimplicit-function-declaration]
+  100 |                 if (strcmp(getCodConteudo(conteudos[i]), idConteudo) == 0)
+      |                            ^~~~~~~~~~~~~~
+main2.c:100:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  100 |                 if (strcmp(getCodConteudo(conteudos[i]), idConteudo) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:100:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:111:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  111 |                     printf("SERIE ATUALIZADA COM SUCESSO!\n");
+      |                     ^~~~~~
+main2.c:111:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:115:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  115 |                     printf("CONTEUDO JA CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                     ^~~~~~
+main2.c:115:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:120:42: warning: implicit declaration of function ‘strchr’ [-Wimplicit-function-declaration]
+  120 |                 char *dadosParaCriacao = strchr(linhaDados, ';');
+      |                                          ^~~~~~
+main2.c:120:42: note: include ‘<string.h>’ or provide a declaration of ‘strchr’
+main2.c:120:42: warning: incompatible implicit declaration of built-in function ‘strchr’ [-Wbuiltin-declaration-mismatch]
+main2.c:120:42: note: include ‘<string.h>’ or provide a declaration of ‘strchr’
+main2.c:128:38: warning: implicit declaration of function ‘criaFilme’ [-Wimplicit-function-declaration]
+  128 |                     dadoEspecifico = criaFilme(dadosParaCriacao);
+      |                                      ^~~~~~~~~
+main2.c:128:36: warning: assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  128 |                     dadoEspecifico = criaFilme(dadosParaCriacao);
+      |                                    ^
+main2.c:130:38: warning: implicit declaration of function ‘criaSerie’ [-Wimplicit-function-declaration]
+  130 |                     dadoEspecifico = criaSerie(dadosParaCriacao);
+      |                                      ^~~~~~~~~
+main2.c:130:36: warning: assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  130 |                     dadoEspecifico = criaSerie(dadosParaCriacao);
+      |                                    ^
+main2.c:132:38: warning: implicit declaration of function ‘criaJogo’ [-Wimplicit-function-declaration]
+  132 |                     dadoEspecifico = criaJogo(dadosParaCriacao);
+      |                                      ^~~~~~~~
+main2.c:132:36: warning: assignment to ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  132 |                     dadoEspecifico = criaJogo(dadosParaCriacao);
+      |                                    ^
+main2.c:136:21: error: unknown type name ‘tConteudo’
+  136 |                     tConteudo *novoConteudo = NULL;
+      |                     ^~~~~~~~~
+main2.c:139:40: warning: implicit declaration of function ‘criaConteudo’ [-Wimplicit-function-declaration]
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                        ^~~~~~~~~~~~
+main2.c:139:69: error: ‘getAnoLancamentoFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                     ^~~~~~~~~~~~~~~~~~~~~
+main2.c:139:92: error: ‘getCodConteudoFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                            ^~~~~~~~~~~~~~~~~~~
+main2.c:139:113: error: ‘getNotaMediaFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                 ^~~~~~~~~~~~~~~~~
+main2.c:139:132: error: ‘getTituloFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                    ^~~~~~~~~~~~~~
+main2.c:139:148: error: ‘getDuracaoFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                                    ^~~~~~~~~~~~~~~
+main2.c:139:165: error: ‘printaFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                                                     ^~~~~~~~~~~
+main2.c:139:178: error: ‘getRestricaoAssinaturaFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:139:207: error: ‘getTipoFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                                                                                               ^~~~~~~~~~~~
+main2.c:139:221: error: ‘getRestricaoIdadeFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                                                                                                             ^~~~~~~~~~~~~~~~~~~~~~
+main2.c:139:245: error: ‘liberaFilme’ undeclared (first use in this function)
+  139 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoFilme, getCodConteudoFilme, getNotaMediaFilme, getTituloFilme, getDuracaoFilme, printaFilme, getRestricaoAssinaturaFilme, getTipoFilme, getRestricaoIdadeFilme, liberaFilme);
+      |                                                                                                                                                                                                                                                     ^~~~~~~~~~~
+main2.c:143:69: error: ‘getAnoLancamentoSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                     ^~~~~~~~~~~~~~~~~~~~~
+main2.c:143:92: error: ‘getCodConteudoSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                            ^~~~~~~~~~~~~~~~~~~
+main2.c:143:113: error: ‘getNotaMediaSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                 ^~~~~~~~~~~~~~~~~
+main2.c:143:132: error: ‘getTituloSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                                    ^~~~~~~~~~~~~~
+main2.c:143:148: error: ‘getDuracaoPorEpisodioSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:143:182: error: ‘getRestricaoAssinaturaSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                                                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:143:211: error: ‘getTipoSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                                                                                                                   ^~~~~~~~~~~~
+main2.c:143:225: error: ‘getRestricaoIdadeSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                                                                                                                                 ^~~~~~~~~~~~~~~~~~~~~~
+main2.c:143:249: error: ‘liberaSerie’ undeclared (first use in this function)
+  143 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoSerie, getCodConteudoSerie, getNotaMediaSerie, getTituloSerie, getDuracaoPorEpisodioSerie, NULL, getRestricaoAssinaturaSerie, getTipoSerie, getRestricaoIdadeSerie, liberaSerie);
+      |                                                                                                                                                                                                                                                         ^~~~~~~~~~~
+main2.c:147:69: error: ‘getAnoLancamentoJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                     ^~~~~~~~~~~~~~~~~~~~
+main2.c:147:91: error: ‘getCodJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                           ^~~~~~~~~~
+main2.c:147:103: error: ‘getNotaMediaJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                       ^~~~~~~~~~~~~~~~
+main2.c:147:121: error: ‘getTituloJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                                         ^~~~~~~~~~~~~
+main2.c:147:136: error: ‘getDuracaoEstimadaJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                                                        ^~~~~~~~~~~~~~~~~~~~~~
+main2.c:147:166: error: ‘getRestricaoAssinaturaJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                                                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:147:194: error: ‘getTipoJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                                                                                                                  ^~~~~~~~~~~
+main2.c:147:207: error: ‘getRestricaoIdadeJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                                                                                                                               ^~~~~~~~~~~~~~~~~~~~~
+main2.c:147:230: error: ‘liberaJogo’ undeclared (first use in this function)
+  147 |                         novoConteudo = criaConteudo(dadoEspecifico, getAnoLancamentoJogo, getCodJogo, getNotaMediaJogo, getTituloJogo, getDuracaoEstimadaJogo, NULL, getRestricaoAssinaturaJogo, getTipoJogo, getRestricaoIdadeJogo, liberaJogo);
+      |                                                                                                                                                                                                                                      ^~~~~~~~~~
+main2.c:151:33: warning: incompatible implicit declaration of built-in function ‘realloc’ [-Wbuiltin-declaration-mismatch]
+  151 |                     conteudos = realloc(conteudos, qtdConteudos * sizeof(tConteudo *));
+      |                                 ^~~~~~~
+main2.c:151:33: note: include ‘<stdlib.h>’ or provide a declaration of ‘realloc’
+main2.c:151:74: error: ‘tConteudo’ undeclared (first use in this function); did you mean ‘idConteudo’?
+  151 |                     conteudos = realloc(conteudos, qtdConteudos * sizeof(tConteudo *));
+      |                                                                          ^~~~~~~~~
+      |                                                                          idConteudo
+main2.c:151:85: error: expected expression before ‘)’ token
+  151 |                     conteudos = realloc(conteudos, qtdConteudos * sizeof(tConteudo *));
+      |                                                                                     ^
+main2.c:153:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  153 |                     printf("CONTEUDO CADASTRADO COM SUCESSO!\n");
+      |                     ^~~~~~
+main2.c:153:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:159:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  159 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:162:23: error: ‘usuarioAlvo’ undeclared (first use in this function); did you mean ‘usuarios’?
+  162 |             tUsuario *usuarioAlvo = NULL;
+      |                       ^~~~~~~~~~~
+      |                       usuarios
+main2.c:165:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  165 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:165:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:172:24: error: ‘conteudoAlvo’ undeclared (first use in this function); did you mean ‘conteudos’?
+  172 |             tConteudo *conteudoAlvo = NULL;
+      |                        ^~~~~~~~~~~~
+      |                        conteudos
+main2.c:177:32: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  177 |                     if (strcmp(getCodConteudo(conteudos[i]), idConteudo) == 0)
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                int
+main2.c:177:32: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:187:17: warning: implicit declaration of function ‘adicionaConteudoNaLista’ [-Wimplicit-function-declaration]
+  187 |                 adicionaConteudoNaLista(usuarioAlvo, conteudoAlvo);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~
+main2.c:188:17: warning: implicit declaration of function ‘imprimeListaDeReproducao’ [-Wimplicit-function-declaration]
+  188 |                 imprimeListaDeReproducao(usuarioAlvo);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:192:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  192 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:192:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:196:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  196 |                 printf("O CONTEUDO %s NAO ESTA CADASTRADO!\n", idConteudo);
+      |                 ^~~~~~
+main2.c:196:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:201:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  201 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:207:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  207 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:207:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:216:21: warning: implicit declaration of function ‘removeConteudoDaLista’ [-Wimplicit-function-declaration]
+  216 |                 if (removeConteudoDaLista(usuarioAlvo, idConteudo))
+      |                     ^~~~~~~~~~~~~~~~~~~~~
+main2.c:218:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  218 |                     printf("O CONTEUDO %s FOI REMOVIDO DA LISTA DE REPRODUCAO DO USUARIO %s!\n", idConteudo, cpfUsuario);
+      |                     ^~~~~~
+main2.c:218:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:222:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  222 |                     printf("O CONTEUDO NAO ESTA PRESENTE NA LISTA DE REPRODUCAO DO USUARIO %s!\n", cpfUsuario);
+      |                     ^~~~~~
+main2.c:222:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:228:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  228 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:228:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:233:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  233 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:238:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  238 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:238:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:251:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  251 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:251:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:256:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  256 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:260:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  260 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:260:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:269:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  269 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:269:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:271:22: warning: implicit declaration of function ‘getQtdConteudoNaLista’ [-Wimplicit-function-declaration]
+  271 |             else if (getQtdConteudoNaLista(usuarioAlvo) == 0)
+      |                      ^~~~~~~~~~~~~~~~~~~~~
+main2.c:273:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  273 |                 printf("LISTA DO USUARIO %s ESTA VAZIA! OPERACAO NAO PERMITIDA!\n", cpfUsuario);
+      |                 ^~~~~~
+main2.c:273:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:277:28: error: ‘conteudoConsumido’ undeclared (first use in this function)
+  277 |                 tConteudo *conteudoConsumido = consomePrimeiroDaLista(usuarioAlvo);
+      |                            ^~~~~~~~~~~~~~~~~
+main2.c:277:48: warning: implicit declaration of function ‘consomePrimeiroDaLista’ [-Wimplicit-function-declaration]
+  277 |                 tConteudo *conteudoConsumido = consomePrimeiroDaLista(usuarioAlvo);
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~
+main2.c:279:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  279 |                 printf("CONTEUDO %s FOI CONSUMIDO PELO USUARIO %s!\n", getTituloConteudo(conteudoConsumido), cpfUsuario);
+      |                 ^~~~~~
+main2.c:279:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:279:72: warning: implicit declaration of function ‘getTituloConteudo’ [-Wimplicit-function-declaration]
+  279 |                 printf("CONTEUDO %s FOI CONSUMIDO PELO USUARIO %s!\n", getTituloConteudo(conteudoConsumido), cpfUsuario);
+      |                                                                        ^~~~~~~~~~~~~~~~~
+main2.c:281:21: warning: implicit declaration of function ‘getTipoUsuario’ [-Wimplicit-function-declaration]
+  281 |                 if (getTipoUsuario(usuarioAlvo) == ADULTO)
+      |                     ^~~~~~~~~~~~~~
+main2.c:286:32: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+  286 |                     int nota = atoi(linhaNota);
+      |                                ^~~~
+main2.c:290:25: error: unknown type name ‘tAvaliacao’
+  290 |                         tAvaliacao *novaAvaliacao = criaAvaliacao(cpfUsuario, nota);
+      |                         ^~~~~~~~~~
+main2.c:290:53: warning: implicit declaration of function ‘criaAvaliacao’ [-Wimplicit-function-declaration]
+  290 |                         tAvaliacao *novaAvaliacao = criaAvaliacao(cpfUsuario, nota);
+      |                                                     ^~~~~~~~~~~~~
+main2.c:290:53: warning: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+main2.c:291:25: warning: implicit declaration of function ‘inserirAvaliacaoConteudo’ [-Wimplicit-function-declaration]
+  291 |                         inserirAvaliacaoConteudo(conteudoConsumido, novaAvaliacao);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:299:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  299 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:304:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  304 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:304:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:313:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  313 |                 printf("RELATORIO GERAL DE CONTEUDO\n");
+      |                 ^~~~~~
+main2.c:313:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:315:17: error: unknown type name ‘TipoUsuario’
+  315 |                 TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~
+main2.c:316:17: error: unknown type name ‘TipoAssinatura’
+  316 |                 TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~~~~
+main2.c:316:52: warning: implicit declaration of function ‘getAssinaturaUsuario’ [-Wimplicit-function-declaration]
+  316 |                 TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+      |                                                    ^~~~~~~~~~~~~~~~~~~~
+main2.c:320:32: error: ‘conteudoAtual’ undeclared (first use in this function); did you mean ‘conteudos’?
+  320 |                     tConteudo *conteudoAtual = conteudos[i];
+      |                                ^~~~~~~~~~~~~
+      |                                conteudos
+main2.c:323:56: warning: implicit declaration of function ‘getRestricaoConteudo’ [-Wimplicit-function-declaration]
+  323 |                     if (assinaturaUsuario == PADRAO && getRestricaoConteudo(conteudoAtual) == PREMIUM)
+      |                                                        ^~~~~~~~~~~~~~~~~~~~
+main2.c:327:52: warning: implicit declaration of function ‘getRestricaoIdade’ [-Wimplicit-function-declaration]
+  327 |                     if (tipoUsuario == INFANTIL && getRestricaoIdade(conteudoAtual) == ADULTO)
+      |                                                    ^~~~~~~~~~~~~~~~~
+main2.c:336:25: warning: implicit declaration of function ‘printaConteudo’ [-Wimplicit-function-declaration]
+  336 |                         printaConteudo(conteudoAtual);
+      |                         ^~~~~~~~~~~~~~
+main2.c:347:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  347 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:347:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:352:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  352 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:357:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  357 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:357:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:366:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  366 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:366:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:370:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  370 |                 printf("DIGITE A SENHA:\n");
+      |                 ^~~~~~
+main2.c:370:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:375:28: warning: implicit declaration of function ‘getSenhaUsuario’ [-Wimplicit-function-declaration]
+  375 |                 if (strcmp(getSenhaUsuario(usuarioAlvo), senhaDigitada) != 0)
+      |                            ^~~~~~~~~~~~~~~
+main2.c:382:42: warning: implicit declaration of function ‘getNomeUsuario’ [-Wimplicit-function-declaration]
+  382 |                     printf("NOME: %s\n", getNomeUsuario(usuarioAlvo));
+      |                                          ^~~~~~~~~~~~~~
+main2.c:383:46: warning: implicit declaration of function ‘getTelefoneUsuario’ [-Wimplicit-function-declaration]
+  383 |                     printf("TELEFONE: %s\n", getTelefoneUsuario(usuarioAlvo));
+      |                                              ^~~~~~~~~~~~~~~~~~
+main2.c:384:46: warning: implicit declaration of function ‘getEnderecoUsuario’ [-Wimplicit-function-declaration]
+  384 |                     printf("ENDERECO: %s\n", getEnderecoUsuario(usuarioAlvo));
+      |                                              ^~~~~~~~~~~~~~~~~~
+main2.c:385:53: warning: implicit declaration of function ‘getUsernameUsuario’ [-Wimplicit-function-declaration]
+  385 |                     printf("NOME DE USUARIO: %s\n", getUsernameUsuario(usuarioAlvo));
+      |                                                     ^~~~~~~~~~~~~~~~~~
+main2.c:388:41: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+  388 |                     for (int i = 0; i < strlen(getSenhaUsuario(usuarioAlvo)); i++)
+      |                                         ^~~~~~
+main2.c:388:41: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+main2.c:388:41: warning: incompatible implicit declaration of built-in function ‘strlen’ [-Wbuiltin-declaration-mismatch]
+main2.c:388:41: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+main2.c:394:44: warning: implicit declaration of function ‘getEmailUsuario’ [-Wimplicit-function-declaration]
+  394 |                     printf("E-MAIL: %s\n", getEmailUsuario(usuarioAlvo));
+      |                                            ^~~~~~~~~~~~~~~
+main2.c:395:53: warning: implicit declaration of function ‘getDataNascimentoUsuario’ [-Wimplicit-function-declaration]
+  395 |                     printf("DATA NASCIMENTO: %s\n", getDataNascimentoUsuario(usuarioAlvo));
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:396:63: warning: implicit declaration of function ‘getNumProdutosConsumidosUsuario’ [-Wimplicit-function-declaration]
+  396 |                     printf("NUM. CONTEUDOS CONSUMIDOS: %d\n", getNumProdutosConsumidosUsuario(usuarioAlvo));
+      |                                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:398:40: warning: implicit declaration of function ‘getTotalMinutosConsumidosUsuario’ [-Wimplicit-function-declaration]
+  398 |                     int totalMinutos = getTotalMinutosConsumidosUsuario(usuarioAlvo);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:401:21: warning: implicit declaration of function ‘converteMinutos’ [-Wimplicit-function-declaration]
+  401 |                     converteMinutos(totalMinutos, &horas, &minutos);
+      |                     ^~~~~~~~~~~~~~~
+main2.c:404:64: warning: implicit declaration of function ‘getNumAvaliacoesRealizadasUsuario’ [-Wimplicit-function-declaration]
+  404 |                     printf("NUM. AVALIACOES REALIZADAS: %d\n", getNumAvaliacoesRealizadasUsuario(usuarioAlvo));
+      |                                                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:409:53: warning: implicit declaration of function ‘getCartaoDeCreditoUsuario’ [-Wimplicit-function-declaration]
+  409 |                         printf("CARTAO NUM.: %s\n", getCartaoDeCreditoUsuario(usuarioAlvo));
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:414:57: warning: implicit declaration of function ‘getCpfResponsavelUsuario’ [-Wimplicit-function-declaration]
+  414 |                         printf("CPF RESPONSAVEL: %s\n", getCpfResponsavelUsuario(usuarioAlvo));
+      |                                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:420:21: warning: implicit declaration of function ‘imprimeListaDeConsumidos’ [-Wimplicit-function-declaration]
+  420 |                     imprimeListaDeConsumidos(usuarioAlvo);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~
+main2.c:426:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  426 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:432:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  432 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:432:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:441:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  441 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:441:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:445:17: error: unknown type name ‘TipoAssinatura’
+  445 |                 TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~~~~
+main2.c:446:17: error: unknown type name ‘TipoUsuario’
+  446 |                 TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~
+main2.c:450:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  450 |                     printf("A CONTA DE CPF %s NAO POSSUI PERMISSAO PARA EXECUTAR ESSE COMANDO!\n", cpfUsuario);
+      |                     ^~~~~~
+main2.c:450:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:454:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  454 |                     printf("# - TIPO ID; NOME; DURACAO; DISP. IDIOMA; ANO; PRODUTORA\n");
+      |                     ^~~~~~
+main2.c:454:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:460:29: warning: implicit declaration of function ‘getTipoConteudo’ [-Wimplicit-function-declaration]
+  460 |                         if (getTipoConteudo(conteudoAtual) != 'F')
+      |                             ^~~~~~~~~~~~~~~
+main2.c:477:33: warning: implicit declaration of function ‘strstr’ [-Wimplicit-function-declaration]
+  477 |                             if (strstr(getTituloConteudo(conteudoAtual), termoBusca) != NULL ||
+      |                                 ^~~~~~
+main2.c:477:33: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+main2.c:477:33: warning: incompatible implicit declaration of built-in function ‘strstr’ [-Wbuiltin-declaration-mismatch]
+main2.c:477:33: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+main2.c:497:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  497 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:503:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  503 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:503:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:512:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  512 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:512:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:516:17: error: unknown type name ‘TipoAssinatura’
+  516 |                 TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~~~~
+main2.c:517:17: error: unknown type name ‘TipoUsuario’
+  517 |                 TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~
+main2.c:521:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  521 |                     printf("A CONTA DE CPF %s NAO POSSUI PERMISSAO PARA EXECUTAR ESSE COMANDO!\n", cpfUsuario);
+      |                     ^~~~~~
+main2.c:521:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:525:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  525 |                     printf("# - TIPO ID; NOME; DURACAO; DISP. IDIOMA; ANO; PRODUTORA\n");
+      |                     ^~~~~~
+main2.c:525:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:548:33: warning: incompatible implicit declaration of built-in function ‘strstr’ [-Wbuiltin-declaration-mismatch]
+  548 |                             if (strstr(getTituloConteudo(conteudoAtual), termoBusca) != NULL ||
+      |                                 ^~~~~~
+main2.c:548:33: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+main2.c:568:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  568 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:574:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  574 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:574:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:583:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  583 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:583:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:587:17: error: unknown type name ‘TipoAssinatura’
+  587 |                 TipoAssinatura assinaturaUsuario = getAssinaturaUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~~~~
+main2.c:588:17: error: unknown type name ‘TipoUsuario’
+  588 |                 TipoUsuario tipoUsuario = getTipoUsuario(usuarioAlvo);
+      |                 ^~~~~~~~~~~
+main2.c:592:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  592 |                     printf("A CONTA DE CPF %s NAO POSSUI PERMISSAO PARA EXECUTAR ESSE COMANDO!\n", cpfUsuario);
+      |                     ^~~~~~
+main2.c:592:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:596:21: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  596 |                     printf("# - TIPO ID; NOME; DURACAO; DISP. IDIOMA; ANO; PRODUTORA\n");
+      |                     ^~~~~~
+main2.c:596:21: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:619:33: warning: incompatible implicit declaration of built-in function ‘strstr’ [-Wbuiltin-declaration-mismatch]
+  619 |                             if (strstr(getTituloConteudo(conteudoAtual), termoBusca) != NULL ||
+      |                                 ^~~~~~
+main2.c:619:33: note: include ‘<string.h>’ or provide a declaration of ‘strstr’
+main2.c:639:32: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  639 |             char *cpfUsuario = strtok(args, " ");
+      |                                ^~~~~~
+main2.c:645:28: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  645 |                 if (strcmp(getCpfUsuario(usuarios[i]), cpfUsuario) == 0)
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            |
+      |                            int
+main2.c:645:28: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:657:32: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  657 |                     if (strcmp(getCodConteudo(conteudos[i]), idConteudo) == 0)
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                |
+      |                                int
+main2.c:657:32: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:667:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  667 |                 printf("CPF NAO CADASTRADO! OPERACAO NAO PERMITIDA!\n");
+      |                 ^~~~~~
+main2.c:667:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:671:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  671 |                 printf("NENHUM CONTEUDO ENCONTRADO!\n");
+      |                 ^~~~~~
+main2.c:671:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:675:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  675 |                 printf("USUARIO DE CPF %s NAO TEM ACESSO AO CONTEUDO %s! OPERACAO NAO PERMITIDA\n", cpfUsuario, idConteudo);
+      |                 ^~~~~~
+main2.c:675:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:679:17: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  679 |                 printf("LISTA DE AVALIACOES DO CONTEUDO %s %s - NOTA MEDIA: %.1f\n",
+      |                 ^~~~~~
+main2.c:679:17: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:680:87: warning: implicit declaration of function ‘getNotaMediaConteudo’ [-Wimplicit-function-declaration]
+  680 |                        getCodConteudo(conteudoAlvo), getTituloConteudo(conteudoAlvo), getNotaMediaConteudo(conteudoAlvo));
+      |                                                                                       ^~~~~~~~~~~~~~~~~~~~
+main2.c:682:37: warning: implicit declaration of function ‘getQtdAvaliacoes’ [-Wimplicit-function-declaration]
+  682 |                 int qtdAvaliacoes = getQtdAvaliacoes(conteudoAlvo);
+      |                                     ^~~~~~~~~~~~~~~~
+main2.c:685:21: error: unknown type name ‘tAvaliacao’
+  685 |                     tAvaliacao *avaliacaoAtual = getAvaliacaoPosicao(conteudoAlvo, i);
+      |                     ^~~~~~~~~~
+main2.c:685:50: warning: implicit declaration of function ‘getAvaliacaoPosicao’ [-Wimplicit-function-declaration]
+  685 |                     tAvaliacao *avaliacaoAtual = getAvaliacaoPosicao(conteudoAlvo, i);
+      |                                                  ^~~~~~~~~~~~~~~~~~~
+main2.c:686:42: warning: implicit declaration of function ‘getCpfAvaliacao’ [-Wimplicit-function-declaration]
+  686 |                     char *cpfAvaliador = getCpfAvaliacao(avaliacaoAtual);
+      |                                          ^~~~~~~~~~~~~~~
+main2.c:686:42: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+main2.c:691:36: warning: passing argument 1 of ‘strcmp’ makes pointer from integer without a cast [-Wint-conversion]
+  691 |                         if (strcmp(getCpfUsuario(usuarios[j]), cpfAvaliador) == 0)
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    int
+main2.c:691:36: note: expected ‘const char *’ but argument is of type ‘int’
+main2.c:693:43: warning: assignment to ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+  693 |                             nomeAvaliador = getNomeUsuario(usuarios[j]);
+      |                                           ^
+main2.c:700:70: warning: implicit declaration of function ‘getNotaAvaliacao’ [-Wimplicit-function-declaration]
+  700 |                         printf("%d- %s -%d\n", i + 1, nomeAvaliador, getNotaAvaliacao(avaliacaoAtual));
+      |                                                                      ^~~~~~~~~~~~~~~~
+main2.c:707:13: warning: incompatible implicit declaration of built-in function ‘printf’ [-Wbuiltin-declaration-mismatch]
+  707 |             printf("Comando desconhecido: %s\n", comando);
+      |             ^~~~~~
+main2.c:707:13: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+main2.c:712:43: warning: implicit declaration of function ‘liberaUsuario’ [-Wimplicit-function-declaration]
+  712 |     for (int i = 0; i < qtdUsuarios; i++) liberaUsuario(usuarios[i]);
+      |                                           ^~~~~~~~~~~~~
+main2.c:713:27: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  713 |     if (usuarios != NULL) free(usuarios);
+      |                           ^~~~
+main2.c:713:27: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+main2.c:713:27: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+main2.c:713:27: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+main2.c:715:49: warning: implicit declaration of function ‘liberaDistribuidor’ [-Wimplicit-function-declaration]
+  715 |     for (int i = 0; i < qtdDistribuidores; i++) liberaDistribuidor(distribuidores[i]);
+      |                                                 ^~~~~~~~~~~~~~~~~~
+main2.c:716:33: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  716 |     if (distribuidores != NULL) free(distribuidores);
+      |                                 ^~~~
+main2.c:716:33: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+main2.c:718:44: warning: implicit declaration of function ‘liberaConteudo’ [-Wimplicit-function-declaration]
+  718 |     for (int i = 0; i < qtdConteudos; i++) liberaConteudo(conteudos[i]);
+      |                                            ^~~~~~~~~~~~~~
+main2.c:719:28: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  719 |     if (conteudos != NULL) free(conteudos);
+      |                            ^~~~
+main2.c:719:28: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’

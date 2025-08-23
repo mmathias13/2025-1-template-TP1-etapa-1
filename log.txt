@@ -64,6 +64,8 @@ COPIANDO OS ARQUIVOS PARA A PASTA DE RESULTADO DO ALUNO:
 	 - Copiando Respostas/Matheus/distribuidor.c para Resultados/Matheus/completo
 	 - Copiando Respostas/Matheus/jogo.c para Resultados/Matheus/main
 	 - Copiando Respostas/Matheus/jogo.c para Resultados/Matheus/completo
+	 - Copiando Respostas/Matheus/main2.c para Resultados/Matheus/main
+	 - Copiando Respostas/Matheus/main2.c para Resultados/Matheus/completo
 	 - Copiando Respostas/Matheus/serie.c para Resultados/Matheus/main
 	 - Copiando Respostas/Matheus/serie.c para Resultados/Matheus/completo
 	 - Copiando Respostas/Matheus/usuario.c para Resultados/Matheus/main
@@ -84,11 +86,9 @@ COPIANDO OS ARQUIVOS PARA A PASTA DE RESULTADO DO ALUNO:
 
 COMPILANDO OS ARQUIVOS NA PASTA DE RESULTADO DO ALUNO:
 	 - Compilando a pasta main do aluno, gerando os .o's
-	 - Compilação dos arquivos do aluno na pasta main ok!
-	 - Arquivo de output gerado: Resultados/Matheus/main/result_compilation.txt
+	 - Erro de compilação! Verifique os arquivos da pasta main.
 	 - Compilando a pasta completo do aluno, gerando os .o's
-	 - Compilação dos arquivos do aluno na pasta completo ok!
-	 - Arquivo de output gerado: Resultados/Matheus/completo/result_compilation.txt
+	 - Erro de compilação! Verifique os arquivos da pasta completo.
 	 - Compilando a pasta avaliacao do aluno, gerando os .o's
 	 - Compilação dos arquivos do aluno na pasta avaliacao ok!
 	 - Arquivo de output gerado: Resultados/Matheus/avaliacao/result_compilation.txt
@@ -98,6 +98,8 @@ COMPILANDO OS ARQUIVOS NA PASTA DE RESULTADO DO ALUNO:
 	 - Compilando a pasta filme do aluno, gerando os .o's
 	 - Compilação dos arquivos do aluno na pasta filme ok!
 	 - Arquivo de output gerado: Resultados/Matheus/filme/result_compilation.txt
+ - Arquivos Compilados: Erro!: 2 arquivos com erros de compilacao.
+
  - Arquivos Compilados: ok!
 
 LINKANDO OS ARQUIVOS COMPILADOS:
@@ -513,7 +515,7 @@ RESULTADOS FINAIS
 ----------------------------------------------------------------------------
 Aluno: Matheus
  - Arquivos Esperados Corretos: 7 de 7
- - Pastas Compiladas Corretamente: 5 de 5 
+ - Pastas Compiladas Corretamente: 3 de 5 
  - Pastas Linkadas Corretamente: 5 de 5
  - Teste main
  - Resultados corretos: 0 de 10

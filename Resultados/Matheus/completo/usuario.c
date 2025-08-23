@@ -253,26 +253,18 @@ void liberaUsuario(tUsuario *usuario)
     {
         return;
     }
-
-    // Liberta a memória da lista de reprodução (o array de ponteiros)
     if (usuario->listaDeReproducao != NULL)
     {
         free(usuario->listaDeReproducao);
     }
-
-    // Liberta a memória da lista de consumidos
     if (usuario->listaDeConsumidosIds != NULL)
     {
-        // Primeiro, liberta cada string de ID que foi alocada
         for (int i = 0; i < usuario->qtdConsumidos; i++)
         {
             free(usuario->listaDeConsumidosIds[i]);
         }
-        // Depois, liberta o array de ponteiros
         free(usuario->listaDeConsumidosIds);
     }
-
-    // Por último, liberta o struct do utilizador
     free(usuario);
 }
 

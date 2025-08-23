@@ -64,23 +64,15 @@ tDistribuidor *criaDistribuidor(char *linhaDados)
     return distribuidor;
 }
 
-void liberaDistribuidor(tDistribuidor *distribuidor)
-{
-    if (distribuidor == NULL)
-    {
+void liberaDistribuidor(tDistribuidor* distribuidor) {
+    if (distribuidor == NULL) {
         return;
     }
-
-    // Liberta a lista de conteúdos ofertados
-    // NOTA: Não libertamos cada conteúdo individualmente aqui, pois a lista
-    // principal 'conteudos' no main.c já fará isso. Apenas libertamos
-    // o array de ponteiros que pertence ao distribuidor.
-    if (distribuidor->listaConteudosOfertados != NULL)
-    {
+    // Apenas libertamos o array de ponteiros. A libertação dos conteúdos
+    // é da responsabilidade da lista principal no main.c.
+    if (distribuidor->listaConteudosOfertados != NULL) {
         free(distribuidor->listaConteudosOfertados);
     }
-
-    // Liberta o struct do distribuidor
     free(distribuidor);
 }
 

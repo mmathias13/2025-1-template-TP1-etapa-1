@@ -1,5 +1,5 @@
 Arquivos Esperados Corretos: 7 de 7
-Pastas Compiladas Corretamente: 5 de 5 
+Pastas Compiladas Corretamente: 3 de 5 
 Pastas Linkadas Corretamente: 5 de 5
 Teste main
   - Resultados corretos: 0 de 10

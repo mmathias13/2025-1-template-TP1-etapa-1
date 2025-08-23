@@ -1,24 +1,24 @@
-==103745== Memcheck, a memory error detector
-==103745== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==103745== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==103745== Command: Resultados/Matheus/main/prog Resultados/Matheus/main/Casos/04
-==103745== Parent PID: 103744
-==103745== 
-==103745== Conditional jump or move depends on uninitialised value(s)
-==103745==    at 0x485036C: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==103745==    by 0x10A4EB: main (in /home/matheus/Trabalho/2025-1-template-TP1-etapa-1/Resultados/Matheus/main/prog)
-==103745== 
-==103745== Conditional jump or move depends on uninitialised value(s)
-==103745==    at 0x4850394: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==103745==    by 0x10A4EB: main (in /home/matheus/Trabalho/2025-1-template-TP1-etapa-1/Resultados/Matheus/main/prog)
-==103745== 
-==103745== 
-==103745== HEAP SUMMARY:
-==103745==     in use at exit: 0 bytes in 0 blocks
-==103745==   total heap usage: 70 allocs, 70 frees, 16,580 bytes allocated
-==103745== 
-==103745== All heap blocks were freed -- no leaks are possible
-==103745== 
-==103745== Use --track-origins=yes to see where uninitialised values come from
-==103745== For lists of detected and suppressed errors, rerun with: -s
-==103745== ERROR SUMMARY: 154 errors from 2 contexts (suppressed: 0 from 0)
+==129985== Memcheck, a memory error detector
+==129985== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==129985== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==129985== Command: Resultados/Matheus/main/prog Resultados/Matheus/main/Casos/04
+==129985== Parent PID: 129984
+==129985== 
+==129985== Conditional jump or move depends on uninitialised value(s)
+==129985==    at 0x485036C: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==129985==    by 0x10A4DD: main (in /home/matheus/Trabalho/2025-1-template-TP1-etapa-1/Resultados/Matheus/main/prog)
+==129985== 
+==129985== Conditional jump or move depends on uninitialised value(s)
+==129985==    at 0x4850394: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==129985==    by 0x10A4DD: main (in /home/matheus/Trabalho/2025-1-template-TP1-etapa-1/Resultados/Matheus/main/prog)
+==129985== 
+==129985== 
+==129985== HEAP SUMMARY:
+==129985==     in use at exit: 0 bytes in 0 blocks
+==129985==   total heap usage: 70 allocs, 70 frees, 16,580 bytes allocated
+==129985== 
+==129985== All heap blocks were freed -- no leaks are possible
+==129985== 
+==129985== Use --track-origins=yes to see where uninitialised values come from
+==129985== For lists of detected and suppressed errors, rerun with: -s
+==129985== ERROR SUMMARY: 154 errors from 2 contexts (suppressed: 0 from 0)

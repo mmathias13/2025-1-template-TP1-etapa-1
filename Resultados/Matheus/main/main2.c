@@ -1,118 +1,83 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "avaliacao.h"
-#include "conteudo.h"
-#include "distribuidor.h"
-#include "filme.h"
-#include "jogo.h"
-#include "serie.h"
-#include "usuario.h"
-#include "util.h"
+int main() {
+    char linhaComando[512];
 
-int main()
-{
-
-    char linha[512]; // Buffer para ler os comandos
-
-    // --- Listas Principais do Sistema---
     tUsuario **usuarios = NULL;
     int qtdUsuarios = 0;
-
     tDistribuidor **distribuidores = NULL;
     int qtdDistribuidores = 0;
-
     tConteudo **conteudos = NULL;
     int qtdConteudos = 0;
 
-    while (fgets(linha, 512, stdin) != NULL)
-    {
-        linha[strcspn(linha, "\n")] = '\0'; // Tira o \n da string lida
-        if (strcmp(linha, "OUT") == 0)      // Compara o comando escrito para parar o loop se o usuário digitar "OUT"
+    // O loop principal lê a linha do COMANDO
+    while (fgets(linhaComando, sizeof(linhaComando), stdin) != NULL) {
+        linhaComando[strcspn(linhaComando, "\n")] = '\0';
+        if (strcmp(linhaComando, "OUT") == 0) {
             break;
+        }
 
-        char *comando = strtok(linha, " ");
-
+        // strtok modifica a string, então fazemos uma cópia para preservar os argumentos originais se necessário
+        char copiaLinhaComando[512];
+        strcpy(copiaLinhaComando, linhaComando);
+        char *comando = strtok(copiaLinhaComando, " ");
         char *args = strtok(NULL, "");
 
-        if (strcmp(comando, "CAT") == 0)
-        {
+        if (strcmp(comando, "CAT") == 0) {
+            // Comandos CAT e CAC precisam ler uma linha de dados adicional
             char linhaDados[512];
-            if (fgets(linhaDados, 512, stdin) == NULL)
-            {
-                break;
-            }
+            if (fgets(linhaDados, sizeof(linhaDados), stdin) == NULL) break;
             linhaDados[strcspn(linhaDados, "\n")] = '\0';
 
             char *tipo_ator_str = strtok(args, " ");
             char *subtipo_str = strtok(NULL, "");
 
-            if (strcmp(tipo_ator_str, "USUARIO") == 0)
-            {
-                char copiaLinhaDados[512];
-                strcpy(copiaLinhaDados, linhaDados);
-                strtok(copiaLinhaDados, ";");
-                char *cpf = strtok(NULL, ";");
+            if (strcmp(tipo_ator_str, "USUARIO") == 0) {
+                char copiaDados[512];
+                strcpy(copiaDados, linhaDados);
+                strtok(copiaDados, ";"); // Pula nome
+                char* cpf = strtok(NULL, ";");
 
-                int cpf_existente = 0;
-                for (int i = 0; i < qtdUsuarios; i++)
-                {
-                    if (strcmp(getCpfUsuario(usuarios[i]), cpf) == 0)
-                    {
+                int jaExiste = 0;
+                for (int i = 0; i < qtdUsuarios; i++) {
+                    if (strcmp(getCpfUsuario(usuarios[i]), cpf) == 0) {
                         printf("CPF JA EXISTENTE! OPERACAO NAO PERMITIDA!\n");
-                        cpf_existente = 1;
+                        jaExiste = 1;
                         break;
                     }
                 }
 
-                if (!cpf_existente)
-                {
-                    TipoUsuario tipo;
-                    TipoAssinatura assinatura;
-                    if (strcmp(subtipo_str, "INFANTIL") == 0)
-                    {
-                        tipo = INFANTIL;
-                        assinatura = PADRAO;
-                    }
-                    else
-                    {
-                        tipo = ADULTO;
-                        assinatura = (strcmp(subtipo_str, "PREMIUM") == 0) ? PREMIUM : PADRAO;
-                    }
-
+                if (!jaExiste) {
+                    TipoUsuario tipo = (strcmp(subtipo_str, "INFANTIL") == 0) ? INFANTIL : ADULTO;
+                    TipoAssinatura assinatura = (strcmp(subtipo_str, "PREMIUM") == 0) ? PREMIUM : PADRAO;
+                    
                     qtdUsuarios++;
-                    usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario *));
+                    usuarios = realloc(usuarios, qtdUsuarios * sizeof(tUsuario*));
                     usuarios[qtdUsuarios - 1] = criaUsuario(tipo, assinatura, linhaDados);
                     printf("USUARIO CADASTRADO COM SUCESSO!\n");
                 }
-            }
-            else if (strcmp(tipo_ator_str, "DISTRIBUIDOR") == 0)
-            {
-                char copiaLinhaDados[512];
-                strcpy(copiaLinhaDados, linhaDados);
-                strtok(copiaLinhaDados, ";");
-                char *cnpj = strtok(NULL, ";");
 
-                int cnpj_existente = 0;
-                for (int i = 0; i < qtdDistribuidores; i++)
-                {
-                    if (strcmp(getCnpjDistribuidor(distribuidores[i]), cnpj) == 0)
-                    {
+            } else if (strcmp(tipo_ator_str, "DISTRIBUIDOR") == 0) {
+                char copiaDados[512];
+                strcpy(copiaDados, linhaDados);
+                strtok(copiaDados, ";"); // Pula nome
+                char* cnpj = strtok(NULL, ";");
+                
+                int jaExiste = 0;
+                for (int i = 0; i < qtdDistribuidores; i++) {
+                    if (strcmp(getCnpjDistribuidor(distribuidores[i]), cnpj) == 0) {
                         printf("CNPJ JA EXISTENTE! OPERACAO NAO PERMITIDA!\n");
-                        cnpj_existente = 1;
+                        jaExiste = 1;
                         break;
                     }
                 }
 
-                if (!cnpj_existente)
-                {
+                if (!jaExiste) {
                     qtdDistribuidores++;
-                    distribuidores = realloc(distribuidores, qtdDistribuidores * sizeof(tDistribuidor *));
+                    distribuidores = realloc(distribuidores, qtdDistribuidores * sizeof(tDistribuidor*));
                     distribuidores[qtdDistribuidores - 1] = criaDistribuidor(linhaDados);
                     printf("DISTRIBUIDOR CADASTRADO COM SUCESSO!\n");
                 }
             }
-        }
+        } 
         else if (strcmp(comando, "CAC") == 0)
         {
             char linhaDados[512];
@@ -742,32 +707,16 @@ int main()
             printf("Comando desconhecido: %s\n", comando);
         }
     }
-    for (int i = 0; i < qtdUsuarios; i++)
-    {
-        liberaUsuario(usuarios[i]);
-    }
-    if (usuarios != NULL)
-    {
-        free(usuarios);
-    }
 
-    for (int i = 0; i < qtdDistribuidores; i++)
-    {
-        liberaDistribuidor(distribuidores[i]);
-    }
-    if (distribuidores != NULL)
-    {
-        free(distribuidores);
-    }
+    // --- Bloco de Libertação de Memória ---
+    for (int i = 0; i < qtdUsuarios; i++) liberaUsuario(usuarios[i]);
+    if (usuarios != NULL) free(usuarios);
 
-    for (int i = 0; i < qtdConteudos; i++)
-    {
-        liberaConteudo(conteudos[i]);
-    }
-    if (conteudos != NULL)
-    {
-        free(conteudos);
-    }
+    for (int i = 0; i < qtdDistribuidores; i++) liberaDistribuidor(distribuidores[i]);
+    if (distribuidores != NULL) free(distribuidores);
+
+    for (int i = 0; i < qtdConteudos; i++) liberaConteudo(conteudos[i]);
+    if (conteudos != NULL) free(conteudos);
 
     return 0;
 }
